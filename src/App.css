@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.img-wrapper{
+  height: 400px;
+}
+
+.abc{
+  height: 300px;
+ 
+}
+
+.img{
+  height: 650px;
+  margin: 0%;
+  padding: 2px;
+}
+.card:hover .card-body{
+  transform: translateY(-2rem,);
+  
+}
+
+.card:hover{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+
+.responsive-map{
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 50%;
+  height: 0%;
+}
+.responsive-map iframe{
+  position: absolute;
+  top: 10%;
+  left: 60%;
+  width: 50%;
+  height: 70%;
+}

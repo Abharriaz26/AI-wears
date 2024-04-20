@@ -1,0 +1,119 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import { product } from './Productdata';
+import CookieConsent from 'react-cookie-consent';
+
+const Product = () => {
+  const {id} = useParams();
+    const [value, setValue]=useState([])
+  
+   const getdata = async()=>{
+     let data = await axios.get('dress').then((result)=>setValue(result.data))
+   }
+    useEffect(()=>{
+      getdata();
+    },[])
+    
+  return (
+    <div className='container'>
+    <div className='row'>
+    {
+        product.map((x)=>{
+            return(
+                <div className='col-lg-3 my-2 '>
+<div className="card " style={{width: '18rem'}}>
+<Link to={`/product/${x.id}`}> <img src={x.imageUrl} className="card-img-top img-wrapper " alt="..." /></Link>
+  <div className="card-body ">
+    <h5 className="card-title">{x.title.slice(0,20)}...</h5>
+    <p className="card-text">{x.description.slice(0,50)}...</p>
+    <a href="#" className="btn btn-primary">Add to Cart</a>
+  </div>
+</div>
+
+                </div>
+            )
+        })
+    }
+<CookieConsent
+  location="bottom"
+  buttonText="Accept Cookies!!"
+  cookieName="myAwesomeCookieName2"
+  style={{ background: "#2B373B" }}
+  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+  expires={150}
+>
+  This website uses cookies to enhance the user experience.{" "}
+  This website uses cookies to enhance the user experience.{" "}
+  This website uses cookies to enhance the user experience.{" "}
+  This website uses cookies to enhance the user experience.{" "}
+  This website uses cookies to enhance the user experience.{" "}
+  <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
+</CookieConsent>
+
+    </div>
+    <hr></hr>
+
+    <div className="container">
+    <h2>Contact us</h2>
+    <hr></hr>
+<h3>Be the first to hear about new styles and offers and see how you’ve helped.</h3>
+  <footer className="py-5">
+    <div className="row">
+      <div className="col-6 col-md-2 mb-3">
+        <h5>Information</h5>
+        <ul className="nav flex-column">
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Home</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
+        </ul>
+      </div>
+      <div className="col-6 col-md-2 mb-3">
+        <h5>Section</h5>
+        <ul className="nav flex-column">
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Sports wear</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Casual wear</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Fitness wear</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Fight wear</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Accessories</a></li>
+        </ul>
+      </div>
+      <div className="col-6 col-md-2 mb-3">
+        <h5>Section</h5>
+        <ul className="nav flex-column">
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Facebook</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Instagram</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Linkedin</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Twitter</a></li>
+          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Google+</a></li>
+        </ul>
+      </div>
+      <div className="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>Subscribe to our newsletter</h5>
+          <div className="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label htmlFor="newsletter1" className="visually-hidden">Email address</label>
+            <input id="newsletter1" type="text" className="form-control" placeholder="Email address" />
+            <button className="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div className="d-flex flex-column flex-sm-row justify-content-between  border-top">
+      <p>© 2024 Company, Inc. All rights reserved.</p>
+      <ul className="list-unstyled d-flex">
+        <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width={24} height={24}><use xlinkHref="#twitter" /></svg></a></li>
+        <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width={24} height={24}><use xlinkHref="#instagram" /></svg></a></li>
+        <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width={24} height={24}><use xlinkHref="#facebook" /></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+  
+    </div>
+  )
+}
+
+export default Product
