@@ -123,7 +123,7 @@ return (
            })}
          
             <tr>
-              <td colSpan={6} align="right">Total</td>
+              <td colSpan={6} align="right">Total Amount</td>
               <td className="total" colSpan={2}><b></b>
               </td>
             </tr>
